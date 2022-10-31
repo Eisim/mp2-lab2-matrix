@@ -106,21 +106,21 @@ public:
   }
 
   // скалярные операции
-  TDynamicVector operator+(T val)
+  TDynamicVector operator+( const T& val)
   {
       TDynamicVector<T> res(sz);
       for (int i = 0; i < sz; i++)
           res[i] = (*this)[i] + val;
       return res;
   }
-  TDynamicVector operator-(double val)
+  TDynamicVector operator-(const T& val)
   {
       TDynamicVector<T> res(sz);
       for (int i = 0; i < sz; i++)
           res[i] =(*this)[i]- val;
       return res;
   }
-  TDynamicVector operator*(double val)
+  TDynamicVector operator*(const T& val)
   {
       TDynamicVector<T> res(sz);
       for (int i = 0; i < sz; i++)
@@ -212,10 +212,10 @@ public:
   }
 
   // матрично-скалярные операции
-  TDynamicVector<T> operator*(const T& val)
+  TDynamicMatrix<T> operator*(const T& val)
   {
-      TDynamicMatrix<T> res[sz];
-      for (int i = 0; i < sz; i++) *this[i] *= val;
+      TDynamicMatrix<T> res(sz);
+      for (int i = 0; i < sz; i++) res[i] = pMem[i] * val;
       return res;
   }
 
