@@ -252,8 +252,8 @@ public:
   }
   TDynamicMatrix operator*(const TDynamicMatrix& m)
   {
-      if (sz != v.sz) throw std::logic_error("Sizes are not equal");
-      TDynamicMatrix<T> res;
+      if (sz != m.sz) throw std::logic_error("Sizes are not equal");
+      TDynamicMatrix<T> res(sz);
       for (size_t i = 0; i < sz; i++)
           for (size_t k = 0; k < sz; k++)
               for (size_t j = 0; j < sz; j++)
