@@ -222,13 +222,10 @@ public:
   // матрично-векторные операции
   TDynamicVector<T> operator*(const TDynamicVector<T>& v)
   {
-      if (sz != m.sz) throw("Sizes are not equal");
-      TDynamicVector<T> res[sz];
-      for (int i = 0; i < res.sz; i++) {
-          for (int k = 0; k < sz; k++) {
-              for (int j = 0; j < sz; j++)
-                  res[i] += (pMem[i][k] * m[k][j]);
-          }
+      if (sz != v.size()) throw("Sizes are not equal");
+      TDynamicVector<T> res(sz);
+      for (int i = 0; i < sz; i++) {
+          res[i] = pMem[i] * v;
       }
       return res;
 
