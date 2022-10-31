@@ -265,7 +265,7 @@ public:
   friend istream& operator>>(istream& istr, TDynamicMatrix& v)
   {
       for (int i = 0; i < sz; i++)
-          ostr >> v[i] << "\n";
+          istr >> v[i] ;
       return istr;
   }
   friend ostream& operator<<(ostream& ostr, const TDynamicMatrix& v)
