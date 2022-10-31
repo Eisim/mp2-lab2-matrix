@@ -34,8 +34,9 @@ TEST(TDynamicVector, copied_vector_is_equal_to_source_one)
 
 TEST(TDynamicVector, copied_vector_has_its_own_memory)
 {
-	TDynamicVector<int> v1(10),v2;
-	v2 = v1;
+	TDynamicVector<int> v1(10);
+	v1[0] = 3;
+	TDynamicVector<int> v2(v1);
   EXPECT_NE(&v1[0],&v2[0]);
 }
 
@@ -191,4 +192,38 @@ TEST(TDynamicVector, cant_multiply_vectors_with_not_equal_size)
 	TDynamicVector<int> v1(3), v2(5);
 	ASSERT_ANY_THROW(v1 * v2);
 }
+
+TEST(TDynamicVector, constructor_can_move_vectors)
+{
+	TDynamicVector<int> v1(3);
+	ASSERT_NO_THROW(TDynamicVector<int> v2(std::move(v1)));
+}
+
+
+TEST(TDynamicVector, operator_can_move_vectors)
+{
+	TDynamicVector<int> v1(3),v2;
+	ASSERT_NO_THROW(v2=std::move(v1));
+}
+TEST(TDynamicVector, moved_vector_is_equal_to_source_one)
+{
+	TDynamicVector<int> v1(3), v2,exp(3);
+	v1[1] = 1;
+	v2 = std::move(v1);
+	exp[1] = 1;
+	EXPECT_EQ(v2,exp);
+
+}
+
+
+
+TEST(TDynamicVector, moved_vector_has_its_own_memory)
+{
+	TDynamicVector<int> v1(3);
+	v1[1] = 1;
+	TDynamicVector<int> v2(std::move(v1));
+	EXPECT_NE(&v1[0],&v2[0]);
+}
+
+
 
