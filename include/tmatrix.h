@@ -271,7 +271,7 @@ public:
   friend ostream& operator<<(ostream& ostr, const TDynamicMatrix& v)
   {
       for (int i = 0; i < v.sz; i++)
-          ostr << v[i]<<"\n";
+          ostr << v[i]<<std::endl;
       return ostr;
   }
 };
