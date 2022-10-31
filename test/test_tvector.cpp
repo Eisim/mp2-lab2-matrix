@@ -61,7 +61,8 @@ TEST(TDynamicVector, throws_when_set_element_with_negative_index)
 
 TEST(TDynamicVector, throws_when_set_element_with_too_large_index)
 {
-	ASSERT_ANY_THROW(TDynamicVector<int> v(MAX_VECTOR_SIZE+1));
+	TDynamicVector<int> v(4);
+	ASSERT_ANY_THROW(v.at(4));
 }
 
 TEST(TDynamicVector, can_assign_vector_to_itself)
