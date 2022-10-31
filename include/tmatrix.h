@@ -83,12 +83,12 @@ public:
   // индексация с контролем
   T& at(size_t ind)
   {
-      if (ind > sz || ind < 0)throw out_of_range("Index out of range");
+      if (ind >= sz || ind < 0)throw out_of_range("Index out of range");
       return pMem[ind];
   }
   const T& at(size_t ind) const
   {
-      if (ind > sz || ind < 0)throw out_of_range("Index out of range");
+      if (ind >= sz || ind < 0)throw out_of_range("Index out of range");
       return pMem[ind];
   }
 
