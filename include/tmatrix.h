@@ -145,7 +145,7 @@ public:
           res[i] =res[i]- v[i];
       return res;
   }
-  T operator*(const TDynamicVector& v) noexcept(noexcept(T()))
+  T operator*(const TDynamicVector& v)
   {
       if (v.sz != sz) throw("Sizes are not equal");
       T res=0;
